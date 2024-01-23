@@ -24,10 +24,8 @@ function playRound(playerChoice, computerChoice) {
     while (playerChoice != "rock" && playerChoice != "scissors" && playerChoice != "paper") {
         console.log("Please type a valid option");
         playerChoice = prompt("Choose Rock, Paper or Scissors").toLowerCase();
-        
+
     }
-
-
 
 
     if (playerChoice === "rock" && getComputerChoice(computerChoice) === "rock") {
@@ -103,5 +101,5 @@ function game() {
     }
 }
 
-
 console.log(game());
+playerWin === 3 ? console.log("It's your game!") : console.log("Better luck next time!");
