@@ -60,6 +60,8 @@ function playRound(playerChoice, computerChoice) {
         player.textContent = `Your choice is: ${playerChoice}`;
         computer.textContent = `Computer choice is: ${getComputerChoice(computerChoice)}`;
         result.textContent = "You loose! Paper beats rock";
+        result.classList.remove('player-win');
+        result.classList.remove('player-loose');
         result.classList.add('player-loose');
 
         console.log(playerChoice);
@@ -90,7 +92,7 @@ function playRound(playerChoice, computerChoice) {
         result.classList.remove('player-win');
         result.classList.remove('player-loose');
         result.classList.add('player-win');
-        
+
 
 
 
@@ -125,7 +127,7 @@ function playRound(playerChoice, computerChoice) {
         computer.textContent = `Computer choice is: ${getComputerChoice(computerChoice)}`;
         result.textContent = "It's a tie";
         result.classList.remove('player-win');
-        result.classList.remove('player-loose');    
+        result.classList.remove('player-loose');
 
         console.log(playerChoice);
         console.log(getComputerChoice(computerChoice));
@@ -141,7 +143,7 @@ function playRound(playerChoice, computerChoice) {
         result.classList.remove('player-win');
         result.classList.remove('player-loose');
         result.classList.add('player-win');
-        
+
 
         console.log(playerChoice);
         console.log(getComputerChoice(computerChoice));
@@ -188,7 +190,28 @@ document.addEventListener('click', (e) => {
         computerChoice = Math.floor(Math.random() * 3) + 1;
     }
 
-    playRound(playerChoice, computerChoice);
+    if (playerWin < 3 && computerWin < 3) {
+        playRound(playerChoice, computerChoice);
+    }
+
+    else {
+        let winnerMessage = document.createElement('div');
+        if (playerWin === 3) {
+            winnerMessage.textContent = "You win!!!"
+            winnerMessage.classList.add('textMessage' ,'winner');
+        }
+
+        else {
+            winnerMessage.textContent = "You Loose";
+            winnerMessage.classList.add('textMessage' ,'looser');
+        }
+
+        document.body.appendChild(winnerMessage);
+
+    }
+
+
+
 })
 
 

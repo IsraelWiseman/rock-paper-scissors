@@ -17,3 +17,20 @@
     color: green;
 }
 
+.textMessage {
+    text-align: center;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+ .winner {
+   
+    color: green;
+    background-color: white;
+ }
+
+ .looser {
+   
+    color: red;
+    background-color: black;
+ }
