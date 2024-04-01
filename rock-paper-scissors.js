@@ -1,7 +1,7 @@
-let computerChoice = Math.floor(Math.random() * 3) + 1;
-let playerChoice;
 let computerWin = 0;
 let playerWin = 0;
+let score;
+let result;
 
 function getComputerChoice(computerChoice) {
     if (computerChoice === 1) {
@@ -24,8 +24,8 @@ function playRound(playerChoice, computerChoice) {
 
     let player = document.querySelector('.playerChoice');
     let computer = document.querySelector('.computerChoice');
-    let result = document.querySelector('.result');
-    let score = document.querySelector('.score');
+    result = document.querySelector('.result');
+    score = document.querySelector('.score');
 
 
     if (playerChoice === "rock" && getComputerChoice(computerChoice) === "rock") {
@@ -173,10 +173,16 @@ function playRound(playerChoice, computerChoice) {
 }
 
 
+
+
 document.addEventListener('click', (e) => {
+
     const rock = document.querySelector('.rock');
     const paper = document.querySelector('.paper');
     const scissors = document.querySelector('.scissors');
+    let winnerMessage = document.createElement('div');
+    let computerChoice;
+
     if (e.target === rock) {
         playerChoice = 'rock';
         computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -190,34 +196,54 @@ document.addEventListener('click', (e) => {
         computerChoice = Math.floor(Math.random() * 3) + 1;
     }
 
-    if (playerWin < 3 && computerWin < 3) {
+    if (playerWin < 5 && computerWin < 5) {
         playRound(playerChoice, computerChoice);
     }
 
-    else {
-        let winnerMessage = document.createElement('div');
-        if (playerWin === 3) {
+
+
+    if (playerWin === 5 || computerWin === 5) {
+        const newGame = document.createElement('button');
+        newGame.classList.add('newGame');
+        newGame.textContent = 'New Game';
+        newGame.addEventListener('click', () => {
+            playerWin = 0;
+            computerWin = 0;
+            score.textContent = `Your score is ${playerWin}   Computer score is ${computerWin}`;
+            result.textContent = "";
+            playerChoice = undefined;
+            computerChoice = undefined;
+            winnerMessage.remove();
+            rock.disabled = false;
+            paper.disabled = false;
+            scissors.disabled = false;
+            newGame.remove();
+        });
+
+        document.body.appendChild(newGame);
+
+
+
+        if (playerWin === 5) {
             winnerMessage.textContent = "You win!!!"
-            winnerMessage.classList.add('textMessage' ,'winner');
+            winnerMessage.classList.add('textMessage', 'winner');
+
         }
 
         else {
             winnerMessage.textContent = "You Loose";
-            winnerMessage.classList.add('textMessage' ,'looser');
-        }
+            winnerMessage.classList.add('textMessage', 'looser');
 
+        }
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
         document.body.appendChild(winnerMessage);
+
 
     }
 
-
-
 })
-
-
-
-
-
 
 
 
