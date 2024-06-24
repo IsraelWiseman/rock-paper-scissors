@@ -6,7 +6,7 @@
 .buttons {
     display: flex;
     justify-content: space-around;
-    
+
 }
 
 .player-loose {
@@ -23,14 +23,25 @@
     margin-top: 20px;
 }
 
- .winner {
-   
-    color: green;
-    background-color: white;
- }
+.winner {
 
- .looser {
-   
+    color: rgb(127, 236, 127);
+    background-color: black;
+}
+
+.looser {
+
     color: red;
     background-color: black;
- }
+}
+
+.newGame {
+    background-color: blue;
+    color: aliceblue;
+    margin-left: 550px;
+    margin-top: 10px;
+    width: 155px;
+    height: 100px;
+    font-size: large;
+
+}
