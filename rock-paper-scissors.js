@@ -29,19 +29,16 @@ document.addEventListener('click', (e) => {
     const paper = document.querySelector('.paper');
     const scissors = document.querySelector('.scissors');
     let winnerMessage = document.createElement('div');
-    let computerChoice;
+    let computerChoice = Math.floor(Math.random() * 3) + 1;
 
     if (e.target === rock) {
         playerChoice = 'rock';
-        computerChoice = Math.floor(Math.random() * 3) + 1;
     }
     else if (e.target === paper) {
         playerChoice = 'paper';
-        computerChoice = Math.floor(Math.random() * 3) + 1;
     }
     else if (e.target === scissors) {
         playerChoice = 'scissors';
-        computerChoice = Math.floor(Math.random() * 3) + 1;
     }
 
     if (playerWin < 5 && computerWin < 5) {
@@ -211,38 +208,10 @@ document.addEventListener('click', (e) => {
     }
 
 
-
-
-
-
-
     if (playerWin === 5 || computerWin === 5) {
         const newGame = document.createElement('button');
         newGame.classList.add('newGame');
         newGame.textContent = 'New Game';
-
-
-
-        newGame.addEventListener('click', () => {
-            playerWin = 0;
-            computerWin = 0;
-            score.textContent = "";
-            result.textContent = "";
-            player.textContent = "";
-            computer.textContent = "";
-            playerChoice = undefined;
-            computerChoice = undefined;
-            winnerMessage.remove();
-            rock.disabled = false;
-            paper.disabled = false;
-            scissors.disabled = false;
-            newGame.remove();
-
-        });
-
-
-
-
 
         if (playerWin === 5) {
             winnerMessage.textContent = "You win!!!"
@@ -262,6 +231,25 @@ document.addEventListener('click', (e) => {
         scissors.disabled = true;
         document.body.appendChild(winnerMessage);
         document.body.appendChild(newGame);
+
+
+
+        newGame.addEventListener('click', () => {
+            playerWin = 0;
+            computerWin = 0;
+            score.textContent = "";
+            result.textContent = "";
+            player.textContent = "";
+            computer.textContent = "";
+            playerChoice = undefined;
+            computerChoice = undefined;
+            winnerMessage.remove();
+            rock.disabled = false;
+            paper.disabled = false;
+            scissors.disabled = false;
+            newGame.remove();
+
+        });
 
     }
 
